@@ -1,0 +1,45 @@
+<h2 class="ui center aligned medium icon header">
+  <i class="circular orange users icon"></i>
+  Friends
+</h2>
+
+<div class="ui two column grid">
+	<div class="twelve wide column">
+		<div class="ui fluid raised card chatbox">
+			<div class="content" id="messages">
+				<div class="ui feed" id="message-container">
+				  <!-- We have render partial of _message.html.erb bcoa we have write Message.all in chatbox controller, so it will look for messages folder in view, will create the partial in messages folder it will display all the messages -->
+				  	<%= render @messages %> 
+				</div>	
+			</div>
+			<div class="extra content">
+			<!-- remote: true is take care that this request is submitted by javascript -->
+				<%= form_for(@message, html: { class: "ui reply form", role: "form"}, url: message_path, remote: true) do |f| %>
+			        <div class="field">
+			        </div>
+			        <div class="ui fluid icon input">
+			        	<%= f.text_field :body, placeholder: "Write msg..."%>
+			            <%= f.button '<i class="bordered inverted orange icon edit"></i>'. html_safe %>
+			        </div>
+			    <% end %>  
+			</div>
+		</div>
+	</div>		
+	<div class="four wide column">
+		<div class="ui fluid raised card chatbox">
+			<div class="content">
+				<div class="ui inverted vertical menu">
+				  <a class="active item">
+				    Home
+				  </a>
+				  <a class="item">
+				    Messages
+				  </a>
+				  <a class="item">
+				    Friends
+				  </a>
+				</div>
+			</div>
+		</div>	
+    </div>
+</div>
